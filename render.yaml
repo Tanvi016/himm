@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: himm
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: node server/index.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: AUTH_PIN
+        sync: false          # set manually in Render dashboard
+      - key: SESSION_SECRET
+        generateValue: true   # Render auto-generates a secure random value
